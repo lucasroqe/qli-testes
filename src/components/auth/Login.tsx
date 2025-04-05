@@ -55,12 +55,10 @@ export function Login() {
       {
         onRequest: (ctx) => {
           console.log(ctx);
-          
           setLoading(true);
         },
         onSuccess: (ctx: any) => {
           setLoading(false);
-          console.log(ctx);
           toast.success(`Bem-vindo de volta!`);
           // form.reset()
           setTimeout(() => {
@@ -74,7 +72,6 @@ export function Login() {
         },
       }
     );
-    console.log(values);
   }
 
   return (

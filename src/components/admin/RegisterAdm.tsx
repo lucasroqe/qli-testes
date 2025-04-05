@@ -66,7 +66,7 @@ export function RegisterAdm() {
           toast.success(`Conta de ${values.nome} criada com sucesso`);
           form.reset()
         },
-        onError: () => {
+        onError: (ctx: any) => {
           setLoading(false);
           toast.error("Erro ao criar conta.");
         },
