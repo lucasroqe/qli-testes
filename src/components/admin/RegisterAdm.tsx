@@ -33,7 +33,7 @@ import { formSchema } from '@/lib/zod'
 import { useState } from "react";
 import { toast } from "sonner";
 import { LoaderCircle, Eye, EyeOff } from "lucide-react";
-
+import { useRouter } from "next/navigation";
 
 export function RegisterAdm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -48,6 +48,7 @@ export function RegisterAdm() {
 
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter()
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     await authClient.admin.createUser(
@@ -65,6 +66,7 @@ export function RegisterAdm() {
           setLoading(false);
           toast.success(`Conta de ${values.nome} criada com sucesso`);
           form.reset()
+          router.refresh()
         },
         onError: () => {
           setLoading(false);
@@ -72,7 +74,6 @@ export function RegisterAdm() {
         },
       }
     );
-    console.log(values);
   }
 
   return (
