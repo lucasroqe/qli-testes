@@ -11,12 +11,12 @@ export default async function page() {
     headers: await headers()
   })
   return (
-    <>
+    <div  className="flex min-h-screen flex-col">
       <Header/>
       <Hero/>
       <Footer/>
-      <Signout></Signout>
-      {!session ? "Não logado": "Logado"}
-    </>
+      {/* <Signout></Signout>
+      {!session ? "Não logado": "Logado"} */}
+    </div>
   )
 }

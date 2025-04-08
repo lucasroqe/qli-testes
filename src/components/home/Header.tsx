@@ -17,7 +17,7 @@ export default function Header() {
         </Link>
       </div>
       <div className="flex gap-3">
-        <Button className="font-medium bg-white text-orange-400 border-orange-400 hover:bg-orange-200">
+        <Button className="font-medium">
           <Link href="/login">Acessar</Link>
         </Button>
       </div>
