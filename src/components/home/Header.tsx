@@ -6,7 +6,7 @@ import { Sun } from 'lucide-react'
 
 export default function Header() {
   return (
-    <header className="flex w-full items-center justify-between border-b border-gray-100 bg-sky-200 px-4 py-4">
+    <header className="flex w-full items-center justify-between border-b border-gray-100 px-4 py-4">
       <div>
         <Link
           href="/"

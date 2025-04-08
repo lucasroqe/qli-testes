@@ -2,7 +2,7 @@ import React from 'react'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
 import Signout from './signout'
-import { HeroHighlightDemo } from '@/components/home/HeroHighlightDemo'
+import { Hero } from '@/components/home/Hero'
 import Header from '@/components/home/Header'
 import Footer from '@/components/home/Footer'
 
@@ -13,10 +13,9 @@ export default async function page() {
   return (
     <>
       <Header/>
-      <HeroHighlightDemo/>
+      <Hero/>
       <Footer/>
       <Signout></Signout>
-
       {!session ? "Não logado": "Logado"}
     </>
   )

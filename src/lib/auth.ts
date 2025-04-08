@@ -18,7 +18,7 @@ export const auth = betterAuth({
     admin(),
     nextCookies()
   ],
-  advanced: {
-    useSecureCookies: true
-}
+//   advanced: {
+//     useSecureCookies: true
+// }
 });
