@@ -81,7 +81,7 @@ export function RegisterAdm() {
       <CardHeader>
         <CardTitle className="text-2xl">Criar conta</CardTitle>
         <CardDescription>
-          Insira um e-mail e senha abaixo para registrar sua nova conta.
+          Insira um e-mail e senha abaixo para registrar uma nova conta.
         </CardDescription>
       </CardHeader>
       <CardContent>
