@@ -54,7 +54,6 @@ export function Login() {
       },
       {
         onRequest: (ctx) => {
-          console.log(ctx);
           setLoading(true);
         },
         onSuccess: (ctx: any) => {

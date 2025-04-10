@@ -5,6 +5,7 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar'
 import { cookies } from 'next/headers'
+import { checkAdm } from '@/lib/check-adm'
 
 export default async function Layout({
   children,
@@ -13,10 +14,11 @@ export default async function Layout({
 }) {
   const cookieStore = await cookies()
   const defaultOpen = cookieStore.get('sidebar:state')?.value === 'true'
+  const isAdm = await checkAdm()
 
   return (
     <SidebarProvider defaultOpen={defaultOpen} suppressHydrationWarning>
-      <AppSidebar />
+      <AppSidebar isAdm={isAdm}/>
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
           <div className="flex items-center gap-2 px-4">
