@@ -6,7 +6,6 @@ const formSchema = z.object({
   senha: z
     .string()
     .min(5, { message: "Senha precisa ter no mínimo 5 caracteres" }),
-  cargo: z.string({ required_error: "Por favor, selecione um cargo." }),
 });
 
 export { formSchema }

@@ -27,7 +27,7 @@ export function Hero() {
             <Link href="/login">Comece agora</Link>
               </Button>
             <Button size="lg" className="w-full sm:w-auto cursor-pointer px-6 py-3 text-base" variant="outline">
-              <Link href="/saiba">Saiba mais</Link>
+              <Link href="/about">Saiba mais</Link>
               <SquareArrowOutUpRight className="size-4" />
             </Button>
           </div>
