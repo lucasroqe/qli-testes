@@ -5,11 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from 'next/link'
+import qliMascote from '../../../public/qli-mascote.png'
 
 export function Hero() {
   return (
-    <div className="relative isolate flex min-h-[85vh] w-full items-center justify-center px-6 py-20 sm:px-12 lg:px-24">
-      <div className="absolute inset-0 -z-10 bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]" />
+    <div className="relative isolate flex flex-grow w-full items-center justify-center px-6 py-20 sm:px-12 lg:px-24 bg-[var(--hero-background)]">
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(220,220,220,0.7)_1px,transparent_1px),linear-gradient(to_bottom,rgba(220,220,220,0.7)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(70,70,100,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(70,70,100,0.3)_1px,transparent_1px)] bg-[size:6rem_4rem]" />
       <div className="grid w-full max-w-7xl grid-cols-1 lg:grid-cols-2">
         <div className="flex flex-col items-start justify-center gap-6">
           <Badge variant="secondary" className="px-3 py-1 text-sm">
@@ -35,7 +36,7 @@ export function Hero() {
 
         <div className="flex items-center justify-end">
           <Image
-            src="/qli-mascote.png"
+            src={qliMascote}
             width={450}
             height={450}
             alt="Mascote QLI-MATE"

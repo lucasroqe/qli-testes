@@ -13,11 +13,11 @@ export default async function Layout({
   children: React.ReactNode
 }) {
   const cookieStore = await cookies()
-  const defaultOpen = cookieStore.get('sidebar:state')?.value === 'true'
+  // const defaultOpen = cookieStore.get('sidebar:state')?.value === 'true'
   const isAdm = await checkAdm()
-
+  // defaultOpen={defaultOpen}
   return (
-    <SidebarProvider defaultOpen={defaultOpen} suppressHydrationWarning>
+    <SidebarProvider suppressHydrationWarning>
       <AppSidebar isAdm={isAdm}/>
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
