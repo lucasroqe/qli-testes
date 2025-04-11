@@ -4,7 +4,7 @@ import { Hero } from '@/components/home/Hero'
 export default async function page() {
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-col">
       <Hero/>
     </div>
   )

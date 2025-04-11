@@ -8,10 +8,10 @@ import {
   Users
 } from "lucide-react"
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/dashboard/nav-main"
+import { NavProjects } from "@/components/dashboard/nav-projects"
+import { NavUser } from "@/components/dashboard/nav-user"
+import { TeamSwitcher } from "@/components/dashboard/team-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -36,21 +36,21 @@ const data = {
   navMain: [
     {
       title: "Home",
-      url: "#",
+      url: "/dashboard",
       icon: ChartBar,
     },
     {
       title: "Settings",
-      url: "#",
+      url: "",
       icon: Settings2,
       items: [
         {
           title: "Gerais",
-          url: "#",
+          url: "/dashboard/settings/general",
         },
         {
           title: "Conta",
-          url: "#",
+          url: "/dashboard/settings/user",
         },
       ],
     },
@@ -58,7 +58,7 @@ const data = {
   projects: [
     {
       name: "Usuários",
-      url: "#",
+      url: "/dashboard/admin",
       icon: Users,
     },
   ],

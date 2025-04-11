@@ -1,129 +1,71 @@
-import { CloudLightning, Bell, BarChart, Anchor } from "lucide-react";
 import Image from "next/image";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import represa from "../../../public/represaFurnas.jpg";
+import qliLogo from "../../../public/qli-mate-app.jpg";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export function About() {
   return (
-    <>
-      <section className="py-16">
-        <div className="container px-4 mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="relative w-full h-[400px] rounded-3xl overflow-hidden">
-                <Image
-                  src="/represaFurnas.jpg"
-                  alt="Foto do Logo"
-                  fill
-                  quality={100}
-                  className="object-cover hover:scale-110 duration-300"
-                  priority
-                />
-              </div>
-              <div className="absolute w-40 h-40 right-4 -bottom-8 border-4 overflow-hidden rounded-lg border-white">
-                <Image
-                  src="/qli-mate-app.jpg"
-                  alt="Foto do Logo"
-                  fill
-                  quality={100}
-                  priority
-                />
-              </div>
+    <section className="pt-16 bg-gradient-to-b from-white to-slate-50">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="relative group">
+            <div className="relative w-full h-[450px] rounded-2xl shadow-xl">
+              <Image
+                src={represa}
+                alt="Represa de Furnas"
+                fill
+                priority
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
             </div>
-            <div className="space-y-6 mt-10">
-              <h2 className="text-4xl font-bold">SOBRE O PROJETO</h2>
-              <p className="text-justify">
-                Qli-Mate é uma plataforma desenvolvida pelo grupo Storm Access
-                da Fatec Jacareí para promover a segurança e o bem-estar das
-                comunidades ao redor do Lago de Furnas. Integrando dados de três
-                estações meteorológicas, o app fornece informações climáticas
-                confiáveis e alertas em tempo real sobre ventos extremos. Com
-                visualizações intuitivas e notificações precisas, o Qli-Mate
-                ajuda a prevenir acidentes náuticos e apoia atividades
-                econômicas como turismo e pesca. Sua interface amigável e foco
-                na prevenção fazem dele uma ferramenta essencial para os 34
-                municípios da região.
-              </p>
+            <div className="absolute -right-4 -bottom-6 w-44 h-44 border-4 rounded-xl border-white shadow-lg transition-transform duration-300 group-hover:scale-105 bg-white">
+              <div className="relative w-full h-full">
+                <Image
+                  src={qliLogo}
+                  alt="Logo Qli-Mate"
+                  fill
+                  quality={100}
+                  priority
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <div className="space-y-8 lg:pl-6">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                Principais Funcionalidades
+              <div className="w-20 h-1.5 bg-sky-500 rounded-full"></div>
+              <h2 className="text-4xl font-bold tracking-tight">
+                SOBRE O PROJETO
               </h2>
-              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                O Qli-Mate oferece ferramentas essenciais para monitoramento
-                climático e segurança ao redor do Lago de Furnas.
+            </div>
+            <div className="space-y-6 text-slate-700 text-justify">
+              <p className="text-lg leading-relaxed">
+                <span className="font-semibold text-sky-500">Qli-Mate</span>{" "}
+                é uma plataforma desenvolvida pelo grupo <span className="font-medium text-sky-500">Storm Access</span> da Fatec
+                Jacareí para promover a segurança e o bem-estar das comunidades
+                ao redor do Lago de Furnas.
               </p>
+              <p className="leading-relaxed">
+                Integrando dados de estações meteorológicas, o app fornece
+                informações climáticas confiáveis e alertas em tempo real sobre
+                ventos extremos. Com visualizações intuitivas e notificações
+                precisas, o Qli-Mate ajuda a prevenir acidentes e apoia
+                atividades econômicas como turismo e pesca.
+              </p>
+              <p className="leading-relaxed">
+                Sua interface amigável e foco na prevenção fazem dele uma
+                ferramenta essencial para os 34 municípios da região.
+              </p>
+              <Button className="mt-4">
+                Saiba mais
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
-            <Card>
-              <CardHeader className="flex flex-row items-center gap-4">
-                <CloudLightning className="h-8 w-8 text-primary" />
-                <div className="grid gap-1">
-                  <CardTitle>Monitoramento Climático</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Coleta de dados em tempo real de três estações meteorológicas
-                  estrategicamente posicionadas ao redor do Lago de Furnas,
-                  fornecendo informações meteorológicas precisas e oportunas.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center gap-4">
-                <Bell className="h-8 w-8 text-primary" />
-                <div className="grid gap-1">
-                  <CardTitle>Alertas em Tempo Real</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Notificações imediatas sobre condições climáticas perigosas,
-                  ajudando a prevenir acidentes e garantindo a segurança de
-                  navegantes e comunidades locais.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center gap-4">
-                <BarChart className="h-8 w-8 text-primary" />
-                <div className="grid gap-1">
-                  <CardTitle>Representação Visual de Dados</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Dados meteorológicos complexos transformados em visualizações
-                  intuitivas, facilitando a compreensão das condições atuais e
-                  previsões pelos usuários.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center gap-4">
-                <Anchor className="h-8 w-8 text-primary" />
-                <div className="grid gap-1">
-                  <CardTitle>Proteção Comunitária</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Apoio a 34 municípios ao redor do Lago de Furnas, protegendo
-                  atividades econômicas como turismo e pesca por meio de maior
-                  conscientização e segurança climática.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

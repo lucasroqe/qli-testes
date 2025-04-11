@@ -7,13 +7,7 @@ import { checkAdm } from "@/lib/check-adm"
 export default async function Page() {
   const isAdm = await checkAdm()
 
-  if(!isAdm) return redirect('/')
+  if(!isAdm) return redirect('/dashboard')
 
-  return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm space-y-16">
-        <ListAdm/>
-      </div>
-    </div>
-  )
+  return <ListAdm/>
 }
