@@ -8,4 +8,10 @@ const formSchema = z.object({
     .min(5, { message: "Senha precisa ter no mínimo 5 caracteres" }),
 });
 
-export { formSchema }
+const appearanceFormSchema = z.object({
+  theme: z.enum(["light", "dark"], {
+    required_error: "Please select a theme.",
+  }),
+});
+
+export { formSchema, appearanceFormSchema }
