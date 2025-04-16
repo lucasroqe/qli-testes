@@ -40,7 +40,7 @@ const data = {
       icon: ChartBar,
     },
     {
-      title: "Settings",
+      title: "Configurações",
       url: "",
       icon: Settings2,
       items: [
@@ -68,8 +68,8 @@ export function AppSidebar({ isAdm, ...props }: { isAdm: boolean } & React.Compo
 
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+      <SidebarHeader >
+        <TeamSwitcher teams={data.teams}/>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
