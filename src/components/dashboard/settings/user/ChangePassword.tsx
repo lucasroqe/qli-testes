@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { LoaderCircle, Eye, EyeOff } from "lucide-react";
 
+//SEPARAR TROCA DE E-MAIL E SENHA EM DOIS CONPONENTES
 export function ChangePassword() {
   const form = useForm({
     defaultValues: {
@@ -32,33 +33,31 @@ export function ChangePassword() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
+  const router = useRouter();
 
   async function onSubmit(values: any) {
-    await authClient.changeEmail({
-      newEmail: values.email,
-    });
-
-    await authClient.changePassword(
-      {
+    try {
+      setLoading(true);
+  
+      await authClient.changeEmail({
+        newEmail: values.email,
+      });
+  
+      await authClient.changePassword({
         newPassword: values.novaSenha,
         currentPassword: values.senha,
         revokeOtherSessions: true,
-      },
-      {
-        onRequest: () => {
-          setLoading(true);
-        },
-        onSuccess: () => {
-          setLoading(false);
-          toast.success("Dados alterados com sucesso");
-        },
-        onError: (ctx: any) => {
-          setLoading(false);
-          console.log(ctx.error);
-          toast.error("Erro ao alterar dados.");
-        },
-      }
-    );
+      });
+  
+      toast.success("Dados alterados com sucesso");
+      router.refresh();
+      form.reset()
+    } catch (error: any) {
+      console.log(error);
+      toast.error("Erro ao alterar dados.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (

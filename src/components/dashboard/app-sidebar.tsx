@@ -7,7 +7,6 @@ import {
   Sun,
   Users
 } from "lucide-react"
-
 import { NavMain } from "@/components/dashboard/nav-main"
 import { NavProjects } from "@/components/dashboard/nav-projects"
 import { NavUser } from "@/components/dashboard/nav-user"
@@ -20,13 +19,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 
-
 const data = {
-  user: {
-    name: "User",
-    email: "m@example.com",
-    avatar: "",
-  },
   teams: [
     {
       name: "Qli-Mate",
@@ -64,7 +57,7 @@ const data = {
   ],
 }
 
-export function AppSidebar({ isAdm, ...props }: { isAdm: boolean } & React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ isAdm, user, ...props }: { isAdm: boolean, user: {name?: string, email?: string} } & React.ComponentProps<typeof Sidebar>) {
 
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -76,7 +69,7 @@ export function AppSidebar({ isAdm, ...props }: { isAdm: boolean } & React.Compo
         {isAdm && <NavProjects projects={data.projects} />}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
