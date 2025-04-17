@@ -14,43 +14,52 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
-import { formSchema } from "@/lib/zod";
+import { changeEmailFormSchema } from "@/lib/zod";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { LoaderCircle, Eye, EyeOff } from "lucide-react";
+import { LoaderCircle } from "lucide-react";
 
-//TERMINAR 
 export function ChangeEmail() {
-  const form = useForm({
+  const form = useForm<z.infer<typeof changeEmailFormSchema>>({
+    resolver: zodResolver(changeEmailFormSchema),
     defaultValues: {
       email: "",
     },
   });
 
   const [loading, setLoading] = useState(false);
-
   const router = useRouter();
 
-  async function onSubmit(values: any) {
-
-      await authClient.changeEmail(
-    {
-        newEmail: values.email
+  async function onSubmit(values: z.infer<typeof changeEmailFormSchema>) {
+    await authClient.changeEmail(
+      {
+        newEmail: values.email,
       },
-      {}
+      {
+        onRequest: () => {
+          setLoading(true);
+        },
+        onSuccess: () => {
+          setLoading(false);
+          toast.success("E-mail atualizado com sucesso!");
+          form.reset();
+          router.refresh();
+        },
+        onError: () => {
+          setLoading(false);
+          toast.error("Erro ao atualizar e-mail.");
+        },
+      }
     );
-  
-      toast.success("Dados alterados com sucesso");
-      router.refresh();
-      form.reset()
+
+    toast.success("Dados alterados com sucesso");
+    router.refresh();
+    form.reset();
   }
 
   return (
     <>
-      <div>
-        <h1 className="text-4xl mb-5">Altere seus dados cadastrais</h1>
-      </div>
       <div className="max-w-md">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -75,7 +84,7 @@ export function ChangeEmail() {
               {loading ? (
                 <LoaderCircle size={16} className="animate-spin" />
               ) : (
-                "Alterar senha"
+                "Alterar email"
               )}
             </Button>
           </form>

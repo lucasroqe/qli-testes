@@ -14,17 +14,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
-import { formSchema } from "@/lib/zod";
+import { changePasswordFormSchema } from "@/lib/zod";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { LoaderCircle, Eye, EyeOff } from "lucide-react";
 
-//SEPARAR TROCA DE E-MAIL E SENHA EM DOIS CONPONENTES
 export function ChangePassword() {
-  const form = useForm({
+  const form = useForm<z.infer<typeof changePasswordFormSchema>>({
+    resolver: zodResolver(changePasswordFormSchema),
     defaultValues: {
-      email: "",
       senha: "",
       novaSenha: "",
     },
@@ -33,54 +32,38 @@ export function ChangePassword() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
 
-  async function onSubmit(values: any) {
-    try {
-      setLoading(true);
-  
-      await authClient.changeEmail({
-        newEmail: values.email,
-      });
-  
-      await authClient.changePassword({
+  async function onSubmit(values: z.infer<typeof changePasswordFormSchema>) {
+    await authClient.changePassword(
+      {
         newPassword: values.novaSenha,
         currentPassword: values.senha,
         revokeOtherSessions: true,
-      });
-  
-      toast.success("Dados alterados com sucesso");
-      router.refresh();
-      form.reset()
-    } catch (error: any) {
-      console.log(error);
-      toast.error("Erro ao alterar dados.");
-    } finally {
-      setLoading(false);
-    }
+      },
+      {
+        onRequest: () => {
+          setLoading(true);
+        },
+        onSuccess: () => {
+          setLoading(false);
+          toast.success("Senha atualizado com sucesso!");
+          form.reset();
+          // router.refresh();
+        },
+        onError: () => {
+          setLoading(false);
+          toast.error("Erro ao atualizar nova senha.");
+        },
+      }
+    );
   }
 
   return (
     <>
-      <div>
-        <h1 className="text-4xl mb-5">Altere seus dados cadastrais</h1>
-      </div>
       <div className="max-w-md">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Novo e-mail</FormLabel>
-                  <FormControl>
-                    <Input placeholder="" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
             <FormField
               control={form.control}
               name="senha"
