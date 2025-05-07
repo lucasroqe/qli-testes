@@ -1,7 +1,9 @@
 import React from "react";
 import { Component } from "@/components/dashboard/home/chart";
+import { BarComponent } from "@/components/dashboard/home/bar-chart";
 import { WeatherCard } from "@/components/dashboard/home/WeatherCard";
-import { Thermometer, Droplets } from 'lucide-react';
+import { WindSpeedAlert } from "@/components/dashboard/home/alert";
+import { Thermometer, Droplets } from "lucide-react";
 import { ModeToggle } from "@/components/toggle";
 
 export default function Teste() {
@@ -38,6 +40,10 @@ export default function Teste() {
         />
       </div>
       <Component />
+      <div className="grid auto-rows-min gap-4 md:grid-cols-2 mt-4">
+        <BarComponent />
+        <WindSpeedAlert/>
+      </div>
     </div>
   );
 }
