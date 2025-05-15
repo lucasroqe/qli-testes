@@ -12,8 +12,8 @@ interface WeatherCardProps {
 
 export function WeatherCard({ title, value, unit, icon: Icon, color }: WeatherCardProps) {
     return (
-        <Card className="h-full">
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
+        <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="text-sm font-medium">{title}</CardTitle>
                 <Icon className="h-5 w-5" style={{ color }} />
             </CardHeader>
